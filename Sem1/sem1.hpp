@@ -26,6 +26,10 @@ vector<int> twoSum(vector<int>& nums, int target) {
 }
 
 void reverseArray(vector<int>& arr, int left, int right) {
+    if (arr.size() == 0) {
+        return;
+    }
+
     while (left < right) {
         swap(arr[left], arr[right]);
         left++;
@@ -38,8 +42,11 @@ vector<int> reverseArray(vector<int>& arr) {
     return arr;
 }
 
-vector<int> reverseArray(vector<int>& arr, int k) {
+vector<int> rotateArray(vector<int>& arr, int k) {
     int n = arr.size();
+    if (n == 0) {
+        return arr;
+    }
 
     reverseArray(arr, 0, n - 1);
     reverseArray(arr, 0, (k % n) - 1);
@@ -69,7 +76,7 @@ vector<int> merge_sorted_arrays(vector<int>& arr1, vector<int>& arr2) {
     }
     
     for (j; j < arr2.size(); j++) {
-        merged_array.push_back(arr2[i]);
+        merged_array.push_back(arr2[j]);
     }
 
     return merged_array;
@@ -110,7 +117,7 @@ vector<int> sort_binary_array(vector<int>& arr) {
     return arr;
 }
 
-void sortColors(vector<int>& nums) {
+vector<int> sortColors(vector<int>& nums) {
     int low = 0;
     int mid = 0;
     int high = nums.size() - 1;
@@ -127,6 +134,8 @@ void sortColors(vector<int>& nums) {
             high--;
         }
     }
+
+    return nums;
 }
 
 vector<int> evenFirst(vector<int>& nums) {
